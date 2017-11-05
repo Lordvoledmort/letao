@@ -33,26 +33,10 @@
         </div>
     </div>
     
-    <script src="/public/assets/jquery/jquery.min.js"></script>
-    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/js/require.js"></script>
+    <script src="/public/js/config.js"></script>
     <script type="text/javascript">
-        $('form').on('submit',function () {
-            var _this = $(this);
-            $.ajax({
-                url:'/api/employee/employeeLogin',
-                type:'post',
-                data: _this.serialize(),
-                success:function (info) {
-                    if(info.error) {
-                       return alert(info.message);
-                    }
-
-                    location.href = '/';
-                }
-            });
-
-            return false;
-        })
+       require(['src/login']);
     </script>
 </body>
 </html>
