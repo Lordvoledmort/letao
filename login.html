@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>乐淘 - 后台管理</title>
-    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="./assets/nprogress/nprogress.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/public/assets/nprogress/nprogress.css">
+    <link rel="stylesheet" href="/public/css/index.css">
 </head>
 <body>
     <!-- 登录 -->
@@ -20,20 +20,39 @@
                     <span class="input-group-addon">
                         <i class="fa fa-user"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="用户名">
+                    <input type="text" class="form-control" name="username" placeholder="用户名">
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon">
                         <i class="fa fa-key"></i>
                     </span>
-                    <input type="password" class="form-control" placeholder="密码">
+                    <input type="password" class="form-control" name="password" placeholder="密码">
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
             </form>
         </div>
     </div>
     
-    <script src="./assets/jquery/jquery.min.js"></script>
-    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/assets/jquery/jquery.min.js"></script>
+    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $('form').on('submit',function () {
+            var _this = $(this);
+            $.ajax({
+                url:'/api/employee/employeeLogin',
+                type:'post',
+                data: _this.serialize(),
+                success:function (info) {
+                    if(info.error) {
+                       return alert(info.message);
+                    }
+
+                    location.href = '/';
+                }
+            });
+
+            return false;
+        })
+    </script>
 </body>
 </html>
