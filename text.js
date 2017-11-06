@@ -102,3 +102,46 @@ define(['jquery'],functino($) {
 	})
 })
 
+图像上传 使用一个插件  检测到没有define 
+
+如果某个第三方的类库不支持AMD 通过shim可以实现类似模块的用法
+shim : {
+	//模块有何特点 依赖其他
+	uploadify : {
+		deps:['jquery']
+	}
+
+	通过exports 可以将非模块的方法或属性 公开出来
+	(相当于标准模块中的return的作用)
+	通过deps 可以依赖其他模块
+
+	exports:
+
+	deps:['']
+}
+
+jquery 一般使用的规律是
+$(DOM).插件方法(对象格式)
+
+$('#upfile').uploadify({
+	buttonText = '',
+	width:120,
+	height:120,
+	fileObjName::'pic1',上传名字
+	swf:'',插件地址
+	uploader:'',上传地址
+	上传成功后返回的回调函数
+	onUploadSuccess :function(file,data) {
+		var res = JSON.parse(data);
+	}
+
+})
+uploadify 使用flash 方法上传
+
+
+git status  git add -A  git commit -m ''
+
+git push lizhi featrue-product  git checkout master
+
+git merge featrue-product
+git checkout 
