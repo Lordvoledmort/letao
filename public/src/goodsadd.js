@@ -26,11 +26,11 @@ define(['jquery','template','ckeditor','./utils','uploadify'],function ($,templa
 		uploader:'/api/product/addProductPic',
 		onUploadSuccess:function (file,data) {
 			var res = JSON.parse(data);
-
-			$('preview img').attr('src','http://localhost:3000' + res.picAddr);
+			// console.log(data);
+			$('.preview img').attr('src','http://localhost:3000' + res.picAddr);
 			$('input[name="pic"]').val(res.picAddr);
 		}
-	})
+	});
 
 	$.ajax({
 		url:'/api/category/querySecondCategoryPaging',

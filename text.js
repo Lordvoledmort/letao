@@ -47,7 +47,7 @@ git merge developer
 
 		$.ajax({
 			url:'/api'
-			type:'get',
+			type:'get', 
 			data:{page:page,pageSize:size},
 			success:function(info) {
 				//总的数据条数
@@ -102,10 +102,26 @@ define(['jquery'],functino($) {
 	})
 })
 
+CKeditor一个富文本编辑器的插件 需要向外暴露
+shim:{
+	exports:'ckedtior';
+}
+echarts 可视化图像 的插件
+nprogress 顶部进度条的插件
+require(['nprogress','jquery'],function(NProgress,$){
+    	NProgress.start();
+    	NProgress.done();
+    	$(document).ajaxStart(function() {
+    		NProgress.start()
+    	}).ajaxStop(function() {
+    		NProgress.done();
+    	})
+
 图像上传 使用一个插件  检测到没有define 
 
 如果某个第三方的类库不支持AMD 通过shim可以实现类似模块的用法
 shim : {
+	//图片上传依赖jQuery
 	//模块有何特点 依赖其他
 	uploadify : {
 		deps:['jquery']
@@ -145,3 +161,15 @@ git push lizhi featrue-product  git checkout master
 
 git merge featrue-product
 git checkout 
+
+
+
+用户管理
+处理公共部分
+ 
+ template插件 要传两个参数
+ template('ID',数据)
+
+ 前端渲染时遇到事件添加不上 可以使用使用事件委托
+ 给父级元素添加事件 在事件后面跟本身要加事件的类
+ 

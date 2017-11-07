@@ -23,4 +23,8 @@ define(['jquery'],function($){
             })
       })
     //退出登录
+
+    $('.navs a + ul').prev().on('click',function () {
+        $(this).next().slideToggle();
+    })
 })
